@@ -5,9 +5,9 @@ import Dashboard from "./components/Dashboard";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const App = () => {
   const myRouter = createBrowserRouter([
-    { path: "/login", Component: Login },
-    {path:"/signup",Component:Signup},
-    {path:"/dashboard",Component:Dashboard},
+    { path: "login", Component: Login },
+    {path:"signup",Component:Signup},
+    {path:"dashboard",Component:Dashboard},
   ]);
   return (
     <div>
