@@ -21,11 +21,11 @@ const Signup = () => {
           
           <form className="signup-fom">
             <h1>Create your account</h1>
-            <input className=" type="text" placeholder="Institute name"/>
+            <input type="text" placeholder="Institute name"/>
              <input type="text" placeholder="Email"/>
               <input type="text" placeholder="Phone"/>
                <input type="text" placeholder="Password"/>
-               <button>submit</button>
+               <button className="button-text">submit</button>
           </form>
         </div>
       </div>

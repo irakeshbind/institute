@@ -54,6 +54,18 @@
     gap: 10px;
 }
 .signup-fom input{
-    width: 100%;
+    width: 90%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
 
+}
+.button-text{
+   width: 93%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    background-color: #7033ff;
+    border-radius: 10px;  
 }
