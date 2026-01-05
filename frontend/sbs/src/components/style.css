@@ -36,17 +36,19 @@
   width: 30%;
 }
 
+
+
 /* bb */
 .signup-right-box {
   width: 50%;
   padding: 10px;
-  /* height: 80vh; */
-  /* background-color: yellow; */
+
 }
 
 
 .signup-fom{
-    margin-top: 40px;
+  height: 70vh;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -55,17 +57,20 @@
 }
 .signup-fom input{
     width: 90%;
-    border: none;
-    outline: none;
+    
     padding: 10px;
     border-radius: 10px;
+    border: 1px solid #a5a5a5;
+     font-size: 15px;
 
 }
 .button-text{
-   width: 93%;
+   width: 94%;
+   color: white;
+   font-size: 15px;
     border: none;
     outline: none;
     padding: 10px;
-    background-color: #7033ff;
+    background-color: #f96683;
     border-radius: 10px;  
 }
