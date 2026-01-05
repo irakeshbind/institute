@@ -1,18 +1,39 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const Signup = () => {
   // state create
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [Phone, setPhone] = useState("");
-  const [Password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
   const [image, setImage] = useState(null); //  file
   const [imageUrl, setImageUrl] = useState(""); // url create
 
   // submit
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(fullName, email, Phone, Password, image);
+    console.log(fullName, email, phone, password, image);
+
+    // axios api call
+    // axios.post('url'{fullName,email,Phone}) only data
+
+    const formData = new FormData();
+    formData.append('fullName',fullName)
+    formData.append('email',email)
+    formData.append('phone',phone)
+     formData.append('password',password)
+     formData.append('image',image)
+
+    axios.post('ulr',formData)
+    .then(res=>{
+      console.log(res)
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+
+
   };
   // file
   const fileHandler = (e) => {
@@ -66,7 +87,7 @@ const Signup = () => {
               placeholder="Password"
             />
             <input onChange={fileHandler} type="file" />
-            <img className="your-logo" alt="logo" src={imageUrl} />
+           {imageUrl && <img className="your-logo" alt="logo" src={imageUrl} />}
             <button className="button-text" type="submit">
               submit
             </button>
