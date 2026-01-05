@@ -3,6 +3,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+ import { ToastContainer } from 'react-toastify';
 import "./components/style.css";
 const App = () => {
   const myRouter = createBrowserRouter([
@@ -14,6 +15,7 @@ const App = () => {
   return (
     <div>
       <RouterProvider router={myRouter} />
+       <ToastContainer />
     </div>
   );
 };

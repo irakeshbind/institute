@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+ import {  toast } from 'react-toastify';
+ import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   // state create
@@ -9,6 +12,8 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [image, setImage] = useState(null); //  file
   const [imageUrl, setImageUrl] = useState(""); // url create
+  const [isloading, setLoading] = useState(false); // loader
+  const navigate =useNavigate()
 
   // submit
   const submitHandler = (event) => {
@@ -19,21 +24,27 @@ const Signup = () => {
     // axios.post('url'{fullName,email,Phone}) only data
 
     const formData = new FormData();
-    formData.append('fullName',fullName)
-    formData.append('email',email)
-    formData.append('phone',phone)
-     formData.append('password',password)
-     formData.append('image',image)
+    setLoading(true);
+    formData.append("fullName", fullName);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("password", password);
+    formData.append("image", image);
 
-    axios.post('ulr',formData)
-    .then(res=>{
-      console.log(res)
-    })
-    .catch(err=>{
-      console.log(err)
-    })
-
-
+    axios.post("url", formData)
+      .then((res) => {
+         setLoading(false);
+         navigate('/login')
+         toast.success('signup successfully')
+        console.log(res);
+       
+      })
+      .catch((err) => {
+        setLoading(false);
+        toast.error('something is wrong')
+        console.log(err);
+        
+      });
   };
   // file
   const fileHandler = (e) => {
@@ -59,6 +70,7 @@ const Signup = () => {
           <form className="signup-fom" onSubmit={submitHandler}>
             <h1>Create your account</h1>
             <input
+              required
               onChange={(e) => {
                 setFullName(e.target.value);
               }}
@@ -66,6 +78,7 @@ const Signup = () => {
               placeholder="Institute full name"
             />
             <input
+              required
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
@@ -73,6 +86,7 @@ const Signup = () => {
               placeholder="Email"
             />
             <input
+              required
               onChange={(e) => {
                 setPhone(e.target.value);
               }}
@@ -80,15 +94,19 @@ const Signup = () => {
               placeholder="Phone"
             />
             <input
+              required
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
               type="password"
               placeholder="Password"
             />
-            <input onChange={fileHandler} type="file" />
-           {imageUrl && <img className="your-logo" alt="logo" src={imageUrl} />}
+            <input required onChange={fileHandler} type="file" />
+            {imageUrl && (
+              <img className="your-logo" alt="logo" src={imageUrl} />
+            )}
             <button className="button-text" type="submit">
+              {isloading && <i className="fa-solid fa-spinner fa-spin-pulse"></i>}{" "} 
               submit
             </button>
           </form>
