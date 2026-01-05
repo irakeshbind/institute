@@ -1,11 +1,12 @@
-const express = require("express");
-const app = express();
-const authRoute = require("./Routes/auth");
+const express = require('express')
+const app = express()
+const userRouter = require('./Routes/user')
 
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const cors = require("cors");
+// databse connection
 const connectWithDatabase = async () => {
   try {
     // console.log(process.env.TOKEN_KEY)
@@ -18,6 +19,8 @@ const connectWithDatabase = async () => {
   }
 };
 connectWithDatabase();
+
+connectWithDatabase();
 app.use(cors());
 app.use(
   fileUpload({
@@ -26,6 +29,5 @@ app.use(
 );
 app.use(bodyParser.json());
 
-app.use("/user", authRoute);
-
+app.use('user',userRouter)
 module.exports = app;
